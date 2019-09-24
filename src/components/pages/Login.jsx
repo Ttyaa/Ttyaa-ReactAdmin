@@ -82,7 +82,7 @@ class Login extends React.Component {
             </div>
             <FormItem {...this.formItemLayout} className="userStyle" >
               {getFieldDecorator('username', {
-                initialValue: cookies.load('authCookie').username,
+                initialValue: cookies.load('authCookie') ? cookies.load('authCookie').username : '',
                 rules: [{ required: true, message: '请输入用户名!' }]
               })(
                 <Input
@@ -93,7 +93,7 @@ class Login extends React.Component {
             </FormItem>
             <FormItem {...this.formItemLayout} className="passwordStyle" >
               {getFieldDecorator('password', {
-                initialValue: cookies.load('authCookie').password,
+                initialValue: cookies.load('authCookie') ? cookies.load('authCookie').password : '',
                 rules: [{ required: true, message: '请输入密码!' }]
               })(
                 <Input

@@ -6,38 +6,38 @@ export default {
 			icon: 'mobile',
 			component: 'Dashboard'
 		},
-		// {
-		// 	key: '/app/settingControl',
-		// 	title: '系统管理',
-		// 	icon: 'mobile',
-		// 	auth: 'superAdmin',
-		// 	subs: [
-		// 		{
-		// 			key: '/app/settingControl/userControl',
-		// 			title: '用户管理',
-		// 			icon: 'audit',
-		// 			component: ''
-		// 		},
-		// 		{
-		// 			key: '/app/settingControl/roleControl',
-		// 			title: '角色管理',
-		// 			icon: 'audit',
-		// 			component: ''
-		// 		},
-		// 		{
-		// 			key: '/app/settingControl/authControl',
-		// 			title: '权限管理',
-		// 			icon: 'audit',
-		// 			component: ''
-		// 		},
-		// 		{
-		// 			key: '/app/settingControl/menuControl',
-		// 			title: '菜单管理',
-		// 			icon: 'audit',
-		// 			component: ''
-		// 		}
-		// 	]
-		// },
+		{
+			key: '/app/settingControl',
+			title: '系统管理',
+			icon: 'mobile',
+			auth: 'superAdmin',
+			subs: [
+				{
+					key: '/app/settingControl/userControl',
+					title: '用户管理',
+					icon: 'audit',
+					component: ''
+				},
+				{
+					key: '/app/settingControl/roleControl',
+					title: '角色管理',
+					icon: 'audit',
+					component: ''
+				},
+				{
+					key: '/app/settingControl/authControl',
+					title: '权限管理',
+					icon: 'audit',
+					component: ''
+				},
+				{
+					key: '/app/settingControl/menuControl',
+					title: '菜单管理',
+					icon: 'audit',
+					component: ''
+				}
+			]
+		},
 		{
 			key: '/app/amorous',
 			title: '风土人情',
@@ -68,7 +68,7 @@ export default {
 				{
 					key: '/app/diffamilycontroller/diffamilycontrollerdata',
 					title: '困难家庭管理',
-					component: 'Amorous'
+					component: 'DifFamilyControler'
 				}
 			]
 		},
@@ -78,14 +78,14 @@ export default {
 			icon: 'audit',
 			subs: [
 				{
-					key: '/app/diffamilycontroller/adddifstudentcontroller',
+					key: '/app/difstudentcontroller/adddifstudentcontroller',
 					title: '新增困难学生',
 					component: 'AddDifStudent'
 				},
 				{
-					key: '/app/diffamilycontroller/difstudentcontrollerdata',
+					key: '/app/difstudentcontroller/difstudentcontrollerdata',
 					title: '困难学生管理',
-					component: 'Amorous'
+					component: 'DifStudent'
 				}
 			]
 		},
@@ -102,7 +102,7 @@ export default {
 				{
 					key: '/app/diffamilycontroller/enterprisecontrollerdata',
 					title: '企业管理',
-					component: 'Amorous'
+					component: 'Enterprise'
 				}
 			]
 		},
@@ -112,14 +112,14 @@ export default {
 			icon: 'audit',
 			subs: [
 				{
-					key: '/app/diffamilycontroller/addfamouscontroller',
+					key: '/app/famouscontroller/addfamouscontroller',
 					title: '新增名人',
-					component: 'Amorous'
+					component: 'AddPerson'
 				},
 				{
-					key: '/app/diffamilycontroller/famouscontrollerdata',
+					key: '/app/famouscontroller/famouscontrollerdata',
 					title: '名人管理',
-					component: 'Amorous'
+					component: 'Person'
 				}
 			]
 		},
@@ -129,31 +129,31 @@ export default {
 			icon: 'audit',
 			subs: [
 				{
-					key: '/app/diffamilycontroller/addfoodcontroller',
+					key: '/app/foodcontroller/addfoodcontroller',
 					title: '新增美食',
-					component: 'Amorous'
+					component: 'AddFood'
 				},
 				{
-					key: '/app/diffamilycontroller/foodcontrollerdata',
+					key: '/app/foodcontroller/foodcontrollerdata',
 					title: '美食管理',
-					component: 'Amorous'
+					component: 'Food'
 				}
 			]
 		},
 		{
 			key: '/app/informationcontroller',
-			title: '资讯/政务党务管理',
+			title: '资讯/政务/党务管理',
 			icon: 'audit',
 			subs: [
 				{
 					key: '/app/diffamilycontroller/addinformationcontroller',
-					title: '新增资讯/政务党务',
-					component: 'Amorous'
+					title: '新增资讯/政务/党务',
+					component: 'AddInformation'
 				},
 				{
 					key: '/app/diffamilycontroller/informationcontrollerdata',
-					title: '资讯/政务党务管理',
-					component: 'Amorous'
+					title: '资讯/政务/党务管理',
+					component: 'Information'
 				}
 			]
 		},
@@ -163,12 +163,12 @@ export default {
 			icon: 'audit',
 			subs: [
 				{
-					key: '/app/diffamilycontroller/addscenerycontroller',
+					key: '/app/scenerycontroller/addscenerycontroller',
 					title: '新增景区',
-					component: 'Amorous'
+					component: 'AddScenery'
 				},
 				{
-					key: '/app/diffamilycontroller/scenerycontrollerdata',
+					key: '/app/scenerycontroller/scenerycontrollerdata',
 					title: '景区管理',
 					component: 'Amorous'
 				}
@@ -199,12 +199,12 @@ export default {
 				{
 					key: '/app/wheelplantingcontroller/addwheelplanting',
 					title: '新增轮播图',
-					component: 'Amorous'
+					component: 'AddWheelplanting'
 				},
 				{
 					key: '/app/wheelplantingcontroller/wheelplanting',
 					title: '轮播图管理',
-					component: 'Amorous'
+					component: 'Wheelplanting'
 				}
 			]
 		},

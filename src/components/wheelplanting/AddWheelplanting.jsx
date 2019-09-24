@@ -19,10 +19,16 @@ const AddWheelplanting = props => {
   // 表格配置
   const FormConfig = [
     {
+      label: '标题',
+      field: 'title',
+      type: 'text',
+      placeholder: '请输入标题'
+    },
+    {
       label: '图片文件',
-      field: 'picture',
+      field: 'file',
       type: 'file',
-      placeholder: '...'
+      placeholder: '添加图片'
     }
   ]
 

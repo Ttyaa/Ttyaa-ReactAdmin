@@ -29,6 +29,18 @@ const AddDifStudent = props => {
       placeholder: '请选择村镇id'
     },
     {
+      label: '学生姓名',
+      field: 'name',
+      type: 'text',
+      placeholder: '请输入学生姓名'
+    },
+    {
+      label: '学生地址',
+      field: 'address',
+      type: 'text',
+      placeholder: '请输入学生地址'
+    },
+    {
       label: '困难学生描述',
       field: 'difDesc',
       type: 'richText',
@@ -37,7 +49,7 @@ const AddDifStudent = props => {
   ]
 
   // 设置跳转地址
-  const skipUrl = '/app/diffamilycontroller/difstudentcontrollerdata';
+  const skipUrl = '/app/difstudentcontroller/difstudentcontrollerdata';
   // url路径管理
   const history = props.history;
   return (

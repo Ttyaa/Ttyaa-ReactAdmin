@@ -16,6 +16,10 @@
  * @file AddDifFamily -> 新增困难家庭
  * @file AddDifStudent -> 新增困难学生
  * @file AddEnterprise -> 新增企业信息
+ * @file DifStudent -> 困难学生管理
+ * @file DifFamilyControler -> 困难家庭管理
+ * @file AddWheelplanting -> 新增轮播图
+ * @file Wheelplanting -> 轮播图管理
  * 
  * ==== 模块测试
  * @file Register -> 完整的注册模块
@@ -35,7 +39,18 @@ import AddTowns from './towns/AddTowns';
 import AddDifFamily from './diffamilycontroller/AddDifFamily';
 import AddDifStudent from './difStudent/AddDifStudent';
 import AddEnterprise from './enterprise/AddEnterprise';
-
+import AddWheelplanting from './wheelplanting/AddWheelplanting';
+import DifFamilyControler from './diffamilycontroller/DifFamilyControler';
+import DifStudent from './difStudent/DifStudent';
+import Wheelplanting from './wheelplanting/wheelplanting';
+import Enterprise from './enterprise/Enterprise';
+import AddPerson from './person/AddPerson';
+import AddFood from './food/AddFood';
+import AddScenery from './scenery/AddScenery';
+import Information from './information/Information';
+import AddInformation from './information/AddInformation';
+import Person from './person/Person';
+ 
 export default {
 	Echarts,
 	Recharts,
@@ -50,5 +65,16 @@ export default {
 	AddTowns,
 	AddDifFamily,
 	AddDifStudent,
-	AddEnterprise
+	AddEnterprise,
+	AddWheelplanting,
+	DifFamilyControler,
+	DifStudent,
+	Wheelplanting,
+	Enterprise,
+	AddPerson,
+	AddFood,
+	AddScenery,
+	AddInformation,
+	Information,
+	Person
 }

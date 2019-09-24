@@ -10,7 +10,7 @@ import React from 'react';
 import EditableTable from '../components/Common/BaseControlComponent/ControlComponent';
 import {connect } from 'react-redux';
 import { getTableDataSelector, getTableTotalSelector, getAllCityIdSelector } from '../selector/controlTableDataSelector';
-import { getTableAction, delTableAction } from '../action/controlTableDataAction';
+import { getTableAction, delTableAction , updateTableAction} from '../action/controlTableDataAction';
 
 const ControlTableContainer = props => {
 
@@ -28,6 +28,7 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
+  updateTableAction,
   getTableAction,
   delTableAction
 })(ControlTableContainer)

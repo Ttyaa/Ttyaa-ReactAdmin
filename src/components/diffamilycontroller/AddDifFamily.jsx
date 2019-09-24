@@ -29,6 +29,24 @@ const AddDifFamily = props => {
       placeholder: '请选择村镇id'
     },
     {
+      label: '户主姓名',
+      field: 'name',
+      type: 'text',
+      placeholder: '填写户主姓名'
+    },
+    {
+      label: '家庭人数',
+      field: 'num',
+      type: 'text',
+      placeholder: '填写家庭人数'
+    },
+    {
+      label: '家庭住址',
+      field: 'address',
+      type: 'text',
+      placeholder: '填写家庭住址'
+    },
+    {
       label: '困难家庭描述',
       field: 'difDesc',
       type: 'richText',

@@ -29,8 +29,32 @@ const AddEnterprise = props => {
       placeholder: '请选择村镇id'
     },
     {
+      label: '企业名称',
+      field: 'name',
+      type: 'text',
+      placeholder: '请输入企业名称'
+    },
+    {
+      label: '企业联系人',
+      field: 'contact',
+      type: 'text',
+      placeholder: '请输入企业联系人姓名'
+    },
+    {
+      label: '联系方式',
+      field: 'mobile',
+      type: 'text',
+      placeholder: '请输入企业联系方式'
+    },
+    {
+      label: '企业地址',
+      field: 'address',
+      type: 'text',
+      placeholder: '请输入企业地址'
+    },
+    {
       label: '企业描述',
-      field: 'difDesc',
+      field: 'enterpriseDes',
       type: 'richText',
       placeholder: '请填写企业描述',
     }

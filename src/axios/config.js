@@ -7,7 +7,8 @@
  * @ 最新修改时间: 2019-07-18 14:36:52
  */
 
-const baseip = 'http://192.168.101.125:8081'; // 公众号ip(也是重构地址)
+//const baseip = 'http://120.79.89.24:8081';  //线上
+ const baseip = 'http://192.168.101.125:8081'; // 公众号ip(也是重构地址)
 /**
  * 登录接口
  */
@@ -163,7 +164,7 @@ export const _UPDATEDIFFAMILY = baseip + '/web/diffamily/update'; // 修改困�
  */
 export const _DIFSTUDENT = baseip + '/web/difstudent'; // 查询困难学生
 export const _DIFSTUDENTBYID = baseip + '/web/difstudent/queryById'; // 通过id查询困难学生
-export const _ADDDIFSTUDENT = baseip + '/web/difstudent/addText'; // 新增困难学生
+export const _ADDDIFSTUDENT = baseip + '/web/difstudent/addDifFamilyText'; // 新增困难学生
 export const _DELDIFSTUDENT = baseip + '/web/difstudent/del'; // 删除困难学生
 export const _UPDATEDIFSTUDENT = baseip + '/web/difstudent/update'; // 修改困难学生
 
@@ -235,7 +236,7 @@ export const _UPDATETOWNS = baseip + '/web/towns/update'; // 修改镇村
  * @description 轮播图相关
  */
 export const _WHEEL = baseip + '/web/wheel'; // 查询轮播图
-export const _ADDWHEEL = baseip + '/web/wheel/addText'; // 新增轮播图
+export const _ADDWHEEL = baseip + '/web/wheel/add'; // 新增轮播图
 export const _DELWHEEL = baseip + '/web/wheel/del'; // 删除轮播图
 export const _UPDATEWHEEL = baseip + '/web/wheel/update'; // 修改轮播图
 

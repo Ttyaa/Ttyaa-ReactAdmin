@@ -1,9 +1,5 @@
 /**
- * @ Author: Gszs
- * @ Create Time: 2019-07-31 20:21:14
- * @ Modified by: Gszs
- * @ Modified time: 2019-08-06 15:27:49
- * @ 文件解释: 新增风土人情
+ * @ 文件解释: 添加名美食
  */
 
 import React, { Fragment } from 'react';
@@ -12,13 +8,13 @@ import { Card } from 'antd';
 import { SVGICON } from '../svg/svgIcon';
 import UpoloadComponentContainer from '../../containers/uploadComponentContainer';
 import BreadcrumbCustom from '../BreadcrumbCustom';
-import { ADDAMOROUS } from '../../axios/index';
+import { ADDFOOD } from '../../axios/index';
 
 const propTypes = {
   FormConfig: PropTypes.array
 }
 
-const AddAmorous = props => {
+const AddFood = props => {
 
   // 表格配置
   const FormConfig = [
@@ -29,24 +25,23 @@ const AddAmorous = props => {
       placeholder: '请选择村镇id'
     },
     {
-      label: '标题',
+      label: '美食名称',
       field: 'name',
       type: 'text',
-      placeholder: '请输入标题'
+      placeholder: '请输入美食名称'
     },
     {
-      label: '风土人情简介',
-      field: 'introduction',
+      label: '美食简介',
+      field: 'foodDesc',
       type: 'richText',
-      placeholder: '请输入风土人情简介',
+      placeholder: '请填写美食简介',
     }
   ]
 
   // 设置跳转地址
-  const skipUrl = '/app/amorous/amorousdata';
+  const skipUrl = '/app/famouscontroller/famouscontrollerdata';
   // url路径管理
   const history = props.history;
-  
   return (
     <Fragment>
       <BreadcrumbCustom second={props.routerTitle} />
@@ -57,13 +52,13 @@ const AddAmorous = props => {
             className="singleStyle"
             key="singleStyle"
           />,
-          <span key="_uploadSliderSpan">新增风土人情</span>,
+          <span key="_uploadSliderSpan">新增美食</span>,
         ]}
       >
         {/* 公共上传容器组件 */}
         <UpoloadComponentContainer
           FormConfig={FormConfig}
-          interfaceUrl={ADDAMOROUS}
+          interfaceUrl={ADDFOOD}
           skipUrl={skipUrl}
           componentName={props.routerTitle}
           routerPath={history}
@@ -74,6 +69,6 @@ const AddAmorous = props => {
 }
 
 // 类型检查
-AddAmorous.propTypes = propTypes
+AddFood.propTypes = propTypes
 
-export default AddAmorous
+export default AddFood

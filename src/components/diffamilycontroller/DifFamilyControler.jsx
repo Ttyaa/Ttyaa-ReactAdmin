@@ -7,15 +7,15 @@
  */
 
 import React from 'react';
-import { DIFFAMILY , DIFFAMILY, TOWNSBYID} from '../../axios/index';
+import { DIFFAMILY,DIFFAMILYBYID,DELDIFFAMILY,UPDATEDIFFAMILY} from '../../axios/index';
 import { G_transformTime } from '../../utils/utils';
 import ControlTableContainer from '../../containers/controlTableContainer';
 import '../../style/components/towns.less';
 
 /**
- * @description 村镇信息管理
+ * @description 困难家庭管理
  */
-const Towns = props => {
+const DifFamilyControler = props => {
   
   // 设置基础表格columns
   const columns = [
@@ -25,30 +25,45 @@ const Towns = props => {
       key: 'townName'
     },
     {
+      title: '户主',
+      dataIndex: 'name',
+      key: 'name'
+    },
+    {
+      title: '家庭人数',
+      dataIndex: 'num',
+      key: 'num'
+    },
+    {
+      title: '地址',
+      dataIndex: 'address',
+      key: 'address'
+    },
+    {
       title: '创建时间',
       dataIndex: 'createTime',
       key: 'createTime',
       render: data => G_transformTime(data)
     },
-    {
-      title: '详细内容',
-      dataIndex: 'introduction',
-      key: 'introduction',
-      width: 200,
-      render: text => (
-        <div
-          className = "townsDesc"
-          style={{
-            whiteSpace: 'pre-wrap',
-            wordWrap: 'break-word',
-            overflow: 'hidden',
-            height: '200px',
-            width: '200px'
-          }}
-          dangerouslySetInnerHTML={{ __html: text.replace(/\\n/g, '<br/>') }}
-        />
-      )
-    },
+    // {
+    //   title: '详细内容',
+    //   dataIndex: 'introduction',
+    //   key: 'introduction',
+    //   width: 200,
+    //   render: text => (
+    //     <div
+    //       className = "townsDesc"
+    //       style={{
+    //         whiteSpace: 'pre-wrap',
+    //         wordWrap: 'break-word',
+    //         overflow: 'hidden',
+    //         height: '120px',
+    //         width: '200px'
+    //       }}
+    //       dangerouslySetInnerHTML={{ __html: text.replace(/\\n/g, '<br/>','<img />') }}
+    //     />
+    //   )
+    // },
     {
       title: '操作',
       dataIndex: 'operation',
@@ -59,10 +74,10 @@ const Towns = props => {
   return (
     <ControlTableContainer 
       columns = {columns}
-      interfaceUrl={[TOWNS, DELTOWNS, TOWNSBYID]}
+      interfaceUrl={[ DIFFAMILY,DELDIFFAMILY]}
       componentName = {props.routerTitle}
       crumbsConfig={{
-        first: '镇村相关',
+        first: '困难家庭相关',
         second: props.routerTitle,
       }}     
     />
@@ -70,4 +85,4 @@ const Towns = props => {
 
 }
 
-export default Towns
+export default DifFamilyControler

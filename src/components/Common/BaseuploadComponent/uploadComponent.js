@@ -28,6 +28,9 @@ import {GETTOWNSLIST} from '../../../axios'
 const BaseFormComponent = props => {
   const [loading] = useState(false);
 
+  const sceneryType = ['自然风光','度假胜地','乡村旅游','主题公园'];
+  const informationType =[ {type:'新闻资讯',id:1},{type:'消息公告',id:2},{type:'喜讯通知',id:3},{type:'政务信息',id:5},{type:'党务信息',id:6}]
+
   useEffect(()=>{
     props.getAllCityAction(GETTOWNSLIST);
   },[])
@@ -180,13 +183,26 @@ const BaseFormComponent = props => {
         if (fileList.length === 0) {
           Object.keys(values).map((cv, index) => {
             // index = 0非富文本, index = 1富文本
-            if (index === 0) {
-              formData[cv] = values[cv]
-            } 
-            else if( index === 1 ){
-              formData[cv] = values[cv]
-            }else {
-              formData[cv] = draftToHtml(editorContent)
+            console.log('index',cv);
+            // if (index === 0) {
+            //   formData[cv] = values[cv]
+            // } 
+            // else if( index === 1 ){
+            //   formData[cv] = values[cv]
+            // }
+            // else if( index === 2 ){
+            //   formData[cv] = values[cv]
+            // }
+            // else if( index === 3 ){
+            //   formData[cv] = values[cv]
+            // }
+            // else {
+            //   formData[cv] = draftToHtml(editorContent)
+            // }
+            if( cv === 'difDesc' || cv === 'introduction' || cv === 'sceneryDesc' || cv === 'content' || cv === 'foodDesc' || cv === 'enterpriseDes' || cv=== 'famousDesc') {
+              formData[cv] = draftToHtml(editorContent);
+            }else{
+              formData[cv] = values[cv];
             }
           })
           formData['picId'] = window.localStorage.getItem('picId');
@@ -213,6 +229,7 @@ const BaseFormComponent = props => {
         message.error(`表单格式有误`);
       }
     });
+       
   };
 
   // 处理表格组件
@@ -296,13 +313,51 @@ const BaseFormComponent = props => {
             </FormItem>
           );
           formItemList.push(input_select);
-
-          // 富文本框
-        } else if (item.type === 'radio') {
+        }else if (item.type === 'select1') {
+          // Select类别
+          const input_select = (
+            <FormItem key={field} label={label}>
+              {getFieldDecorator(field)(
+                <Select placeholder={placeholder}>
+                  {sceneryType.map((item, index) => {
+                    // console.log(item);
+                    return (
+                      <Option value={index+1} key={index}>
+                        {item}
+                      </Option>
+                    );
+                  })}
+                </Select>
+              )}
+            </FormItem>
+          );
+          formItemList.push(input_select);
+        } 
+        else if (item.type === 'select2') {
+          // Select类别
+          const input_select = (
+            <FormItem key={field} label={label}>
+              {getFieldDecorator(field)(
+                <Select placeholder={placeholder}>
+                  {informationType.map((item, index) => {
+                    // console.log(item);
+                    return (
+                      <Option value={item.id} key={index}>
+                        {item.type}
+                      </Option>
+                    );
+                  })}
+                </Select>
+              )}
+            </FormItem>
+          );
+          formItemList.push(input_select);
+        } 
+         else if (item.type === 'radio') {
           const radioInput = (
             <FormItem label={label}>
               {getFieldDecorator(field)(
-                <Radio.Group>
+                <Radio.Group> 
                   {
                     radioContent.map((item, key) => {
                       return <Radio value={item.value} key={key}> {item.item} </Radio>
