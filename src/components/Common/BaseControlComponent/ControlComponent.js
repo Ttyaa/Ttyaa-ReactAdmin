@@ -229,7 +229,7 @@ const EditableTable = props => {
           onCancel={handleCancel}
           onOk={handleOk}
         >
-          <ModalFormContainer rowId={rowId} getDataById={GET_ALL_DATA_BYID} />
+          <ModalFormContainer rowId={rowId} getDataById={GET_ALL_DATA_BYID} update={UPDATE} />
         </Modal>
       </EditableContext.Provider>
     </Fragment>

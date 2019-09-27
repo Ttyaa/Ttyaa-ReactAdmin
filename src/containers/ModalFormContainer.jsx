@@ -1,8 +1,4 @@
 /**
- * @ Author: Gszs
- * @ Create Time: 2019-08-05 18:44:51
- * @ Modified by: Gszs
- * @ Modified time: 2019-09-11 10:30:16
  * @ 文件解释: 修改表格数据的公共容器组件
  */
 
