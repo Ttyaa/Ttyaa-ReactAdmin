@@ -50,6 +50,8 @@ import AddScenery from './scenery/AddScenery';
 import Information from './information/Information';
 import AddInformation from './information/AddInformation';
 import Person from './person/Person';
+import Food from './food/Food';
+import Scenery from './scenery/Scenery';
  
 export default {
 	Echarts,
@@ -76,5 +78,7 @@ export default {
 	AddScenery,
 	AddInformation,
 	Information,
-	Person
+	Person,
+	Food,
+	Scenery
 }

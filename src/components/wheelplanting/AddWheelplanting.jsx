@@ -25,6 +25,12 @@ const AddWheelplanting = props => {
       placeholder: '请输入标题'
     },
     {
+      label: '描述',
+      field: 'describe',
+      type: 'text',
+      placeholder: '请输入描述'
+    },
+    {
       label: '图片文件',
       field: 'file',
       type: 'file',

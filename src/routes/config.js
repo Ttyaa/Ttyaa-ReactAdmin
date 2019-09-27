@@ -170,7 +170,7 @@ export default {
 				{
 					key: '/app/scenerycontroller/scenerycontrollerdata',
 					title: '景区管理',
-					component: 'Amorous'
+					component: 'Scenery'
 				}
 			]
 		},

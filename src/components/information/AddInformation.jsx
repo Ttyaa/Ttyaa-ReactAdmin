@@ -51,7 +51,7 @@ const AddScenery = props => {
   ]
 
   // 设置跳转地址
-  const skipUrl = '/app/information/Information';
+  const skipUrl = '/app/diffamilycontroller/informationcontrollerdata';
   // url路径管理
   const history = props.history;
   return (

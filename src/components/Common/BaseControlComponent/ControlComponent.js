@@ -78,13 +78,13 @@ const EditableCell = props => {
 const EditableTable = props => {
 
   // 接口地址
-  const [GET_ALL_DATA, DELETE_ALL_DATA, GET_ALL_DATA_BYID] = props.interfaceUrl;
+  const [GET_ALL_DATA, DELETE_ALL_DATA, GET_ALL_DATA_BYID, UPDATE ] = props.interfaceUrl;
 
   // 设置初始值
   const [data, setData] = useState(null),
-    [total, setTotal] = useState(10),
-    [visible, setVisible] = useState(false),
-    [rowId, setRowId] = useState(undefined)
+        [total, setTotal] = useState(10),
+        [visible, setVisible] = useState(false),
+        [rowId, setRowId] = useState(undefined)
 
   // 分页
   const [page, setPage] = useState(1);
@@ -129,9 +129,10 @@ const EditableTable = props => {
 
   // modleHandleEdit
   const handleEdit = id => {
-    setRowId(id)
-    setVisible(true)
+    setRowId(id);
+    setVisible(true);
   }
+// console.log(rowId);
 
   // 整合细胞组件与表格行配置
   const components = {
