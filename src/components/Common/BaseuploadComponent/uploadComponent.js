@@ -23,17 +23,17 @@ import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import {GETTOWNSLIST} from '../../../axios'
+import { GETTOWNSLIST } from '../../../axios'
 
 const BaseFormComponent = props => {
   const [loading] = useState(false);
 
-  const sceneryType = ['自然风光','度假胜地','乡村旅游','主题公园'];
-  const informationType =[ {type:'新闻资讯',id:1},{type:'消息公告',id:2},{type:'喜讯通知',id:3},{type:'政务信息',id:5},{type:'党务信息',id:6}]
+  const sceneryType = ['自然风光', '度假胜地', '乡村旅游', '主题公园'];
+  const informationType = [{ type: '新闻资讯', id: 1 }, { type: '消息公告', id: 2 }, { type: '喜讯通知', id: 3 }, { type: '政务信息', id: 5 }, { type: '党务信息', id: 6 }]
 
-  useEffect(()=>{
+  useEffect(() => {
     props.getAllCityAction(GETTOWNSLIST);
-  },[])
+  }, [])
 
   // 用来获取原始组件的push方法
   const history = props.routerPath;
@@ -182,26 +182,10 @@ const BaseFormComponent = props => {
         let formData = {};
         if (fileList.length === 0) {
           Object.keys(values).map((cv, index) => {
-            // index = 0非富文本, index = 1富文本
-            console.log('index',cv);
-            // if (index === 0) {
-            //   formData[cv] = values[cv]
-            // } 
-            // else if( index === 1 ){
-            //   formData[cv] = values[cv]
-            // }
-            // else if( index === 2 ){
-            //   formData[cv] = values[cv]
-            // }
-            // else if( index === 3 ){
-            //   formData[cv] = values[cv]
-            // }
-            // else {
-            //   formData[cv] = draftToHtml(editorContent)
-            // }
-            if( cv === 'difDesc' || cv === 'introduction' || cv === 'sceneryDesc' || cv === 'content' || cv === 'foodDesc' || cv === 'enterpriseDes' || cv=== 'famousDesc') {
+            console.log('index', cv);
+            if (cv === 'difDesc' || cv === 'introduction' || cv === 'sceneryDesc' || cv === 'content' || cv === 'foodDesc' || cv === 'enterpriseDes' || cv === 'famousDesc') {
               formData[cv] = draftToHtml(editorContent);
-            }else{
+            } else {
               formData[cv] = values[cv];
             }
           })
@@ -219,6 +203,7 @@ const BaseFormComponent = props => {
           });
         }
         // 处理页面不需要跳转直接刷新当前页面的情况
+
         if (props.componentName === 'defaultDisplayPicture') {
           props._reload();
         } else {
@@ -229,8 +214,10 @@ const BaseFormComponent = props => {
         message.error(`表单格式有误`);
       }
     });
-       
+
   };
+
+
 
   // 处理表格组件
   const initForm = () => {
@@ -313,7 +300,7 @@ const BaseFormComponent = props => {
             </FormItem>
           );
           formItemList.push(input_select);
-        }else if (item.type === 'select1') {
+        } else if (item.type === 'select1') {
           // Select类别
           const input_select = (
             <FormItem key={field} label={label}>
@@ -322,7 +309,7 @@ const BaseFormComponent = props => {
                   {sceneryType.map((item, index) => {
                     // console.log(item);
                     return (
-                      <Option value={index+1} key={index}>
+                      <Option value={index + 1} key={index}>
                         {item}
                       </Option>
                     );
@@ -332,7 +319,7 @@ const BaseFormComponent = props => {
             </FormItem>
           );
           formItemList.push(input_select);
-        } 
+        }
         else if (item.type === 'select2') {
           // Select类别
           const input_select = (
@@ -352,12 +339,12 @@ const BaseFormComponent = props => {
             </FormItem>
           );
           formItemList.push(input_select);
-        } 
-         else if (item.type === 'radio') {
+        }
+        else if (item.type === 'radio') {
           const radioInput = (
             <FormItem label={label}>
               {getFieldDecorator(field)(
-                <Radio.Group> 
+                <Radio.Group>
                   {
                     radioContent.map((item, key) => {
                       return <Radio value={item.value} key={key}> {item.item} </Radio>

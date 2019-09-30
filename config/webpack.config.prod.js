@@ -16,8 +16,9 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
-const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
+// const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const webpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; //分析包大小
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -123,6 +124,11 @@ module.exports = {
 				.relative(paths.appSrc, info.absoluteResourcePath)
 				.replace(/\\/g, '/'),
 	},
+	externals:{
+		'react':'React',
+		'react-dom':'ReactDOM',
+		'moment':'moment'
+	},
 	optimization: {
 		minimizer: [
 			new TerserPlugin({
@@ -226,7 +232,7 @@ module.exports = {
 			// To fix this, we prevent you from importing files out of src/ -- if you'd like to,
 			// please link the files into your node_modules/ and let module-resolution kick in.
 			// Make sure your source files are compiled, as they will not be processed in any way.
-			new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+			new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson])
 		],
 	},
 	resolveLoader: {
@@ -458,6 +464,7 @@ module.exports = {
 				minifyURLs: true,
 			},
 		}),
+		new webpackBundleAnalyzer({ analyzerPort:8081 }), //分析包的大小
 		// Inlines the webpack runtime script. This script is too small to warrant
 		// a network request.
 		new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),

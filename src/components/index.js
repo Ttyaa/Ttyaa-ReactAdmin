@@ -25,13 +25,11 @@
  * @file Register -> 完整的注册模块
  */
 
-import Echarts from './charts/Echarts';
-import Recharts from './charts/Recharts';
 import Dashboard from '../containers/DashboardContainer';
 import AuthBasic from './auth/Basic';
 import RouterEnter from './auth/RouterEnter';
 import QueryParams from './extension/QueryParams';
-import LogInfo from './log/LogControl';
+// import LogInfo from './log/LogControl';
 import Amorous from './amorous/amorous';
 import AddAmorous from './amorous/AddAmorous';
 import Towns from './towns/Towns';
@@ -54,13 +52,11 @@ import Food from './food/Food';
 import Scenery from './scenery/Scenery';
  
 export default {
-	Echarts,
-	Recharts,
 	Dashboard,
 	AuthBasic,
 	RouterEnter,
 	QueryParams,
-	LogInfo,
+	// LogInfo,
 	Amorous,
 	AddAmorous,
 	Towns,

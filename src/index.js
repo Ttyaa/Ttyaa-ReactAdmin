@@ -11,6 +11,7 @@ import './style/commonStyle/antdGlobal.less' // 选择性覆盖Antd的样式
 import {ConfigProvider} from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import {configureStore} from './store/configureStore';
+import 'babel-polyfill';
 
 ReactDOM.render (
   <AppContainer>

@@ -5,9 +5,12 @@
   "homepage": ".",
   "dependencies": {
     "@alicloud/pop-core": "^1.7.7",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
     "ali-oss": "^6.1.1",
     "antd": "3.23.2",
     "axios": "^0.19.0",
+    "babel-polyfill": "^6.26.0",
     "core-js": "^3.1.4",
     "history": "^4.9.0",
     "lodash": "^4.17.15",
@@ -21,10 +24,10 @@
     "react-router-redux": "^4.0.8",
     "react-vcode": "^1.0.4",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "webpack-bundle-analyzer": "^3.5.2"
   },
   "scripts": {
-    "dll": "webpack -p --config config/webpack.dll.config.js --progress --profile --colors",
     "start": "node scripts/start.js",
     "server": "node scripts/server.js",
     "build": "node scripts/build.js",
@@ -79,6 +82,7 @@
   },
   "babel": {
     "presets": [
+      "@babel/preset-env",
       "react-app"
     ],
     "plugins": [

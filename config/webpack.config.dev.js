@@ -12,7 +12,7 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
+// const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 
 const publicPath = '/'; // 为路径增加前缀
@@ -75,6 +75,10 @@ module.exports = {
 		// 用于存储所有输出文件到本地磁盘
 		devtoolModuleFilenameTemplate: info =>
 			path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+	},
+	externals:{
+		'react':'React',
+		'react-dom':'ReactDOM'
 	},
 	optimization: {
 		splitChunks: {

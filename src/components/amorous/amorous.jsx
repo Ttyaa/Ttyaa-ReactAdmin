@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { GETAMOROUS , DELAMOROUS} from '../../axios/index';
+import { GETAMOROUS,DELAMOROUS,AMOROUSBYID,UPDATEAMOROUS} from '../../axios/index';
 import { G_transformTime } from '../../utils/utils';
 import ControlTableContainer from '../../containers/controlTableContainer';
 
@@ -19,27 +19,32 @@ const Amorous = props => {
   // 设置基础表格columns
   const columns = [
     {
-      title: '名称',
+      title: '村镇名称',
+      dataIndex: 'townName',
+      type: 'text'
+    },
+    {
+      title: '标题',
       dataIndex: 'title',
-      key: 'title'
+      type: 'text'
     },
     {
       title: '创建时间',
       dataIndex: 'createTime',
-      key: 'createTime',
+      type: 'createTime',
       render: data => G_transformTime(data)
     },
     {
       title: '操作',
       dataIndex: 'operation',
-      key: 'operation',
+      type: 'operation',
     },
   ]
 
   return (
     <ControlTableContainer 
       columns = {columns}
-      interfaceUrl={[GETAMOROUS, DELAMOROUS]}
+      interfaceUrl={[GETAMOROUS, DELAMOROUS ,AMOROUSBYID ,UPDATEAMOROUS]}
       crumbsConfig={{
         first: '风土人情',
         second: props.routerTitle,

@@ -465,6 +465,17 @@ export const DELAMOROUS = id => {
 }
 
 /**
+ * @description 通过id风土人情
+ * @param {id} id
+ */
+export const AMOROUSBYID = id => {
+  getToken();
+  return get({
+    url: config._GETAMOROUSBYID + `?id=${id}`
+  })
+}
+
+/**
  * @description 修改风土人情
  */
 export const UPDATEAMOROUS = formData => {

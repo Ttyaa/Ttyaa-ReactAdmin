@@ -208,16 +208,16 @@ export default {
 				}
 			]
 		},
-		{
-			key: '/app/controllog',
-			title: '日志管理',
-			icon: 'snippets',
-			subs: [{
-				key: '/app/controllog/findlog',
-				title: '查询所有日志信息',
-				component: 'LogInfo'
-			}]
-		}
+		// {
+		// 	key: '/app/controllog',
+		// 	title: '日志管理',
+		// 	icon: 'snippets',
+		// 	subs: [{
+		// 		key: '/app/controllog/findlog',
+		// 		title: '查询所有日志信息',
+		// 		component: 'LogInfo'
+		// 	}]
+		// }
 		// ,
 		// {	
 		// 	key: '/app/zz',

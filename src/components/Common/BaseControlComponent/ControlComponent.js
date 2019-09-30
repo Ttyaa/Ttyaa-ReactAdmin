@@ -77,6 +77,7 @@ const EditableCell = props => {
 // EditableTable
 const EditableTable = props => {
 
+  console.log('11111',props);
   // 接口地址
   const [GET_ALL_DATA, DELETE_ALL_DATA, GET_ALL_DATA_BYID, UPDATE ] = props.interfaceUrl;
 
@@ -119,18 +120,22 @@ const EditableTable = props => {
 
   // modleHandleCancel
   const handleCancel = () => {
-    setVisible(false)
+    setVisible(false);
   }
 
   // modleHandleOk
-  const handleOk = () => {
-    setVisible(false)
+  const handleOk = ()=> {
+    setVisible(false);
+    alert(rowId);
+    
+    // props.updateTableAction(UPDATE,rowId,);
   }
 
   // modleHandleEdit
   const handleEdit = id => {
     setRowId(id);
     setVisible(true);
+    console.log(id);
   }
 // console.log(rowId);
 
@@ -229,7 +234,7 @@ const EditableTable = props => {
           onCancel={handleCancel}
           onOk={handleOk}
         >
-          <ModalFormContainer rowId={rowId} getDataById={GET_ALL_DATA_BYID} update={UPDATE} />
+          <ModalFormContainer colums={props.colums} rowId={rowId} getDataById={GET_ALL_DATA_BYID} />
         </Modal>
       </EditableContext.Provider>
     </Fragment>

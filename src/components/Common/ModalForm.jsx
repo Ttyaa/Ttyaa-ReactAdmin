@@ -1,8 +1,4 @@
 /**
- * @ Author: Gszs
- * @ Create Time: 2019-08-05 17:31:03
- * @ Modified by: Gszs
- * @ Modified time: 2019-09-10 15:49:27
  * @ 文件解释: 此公共组件用于修改表单内容
  */
 
@@ -24,13 +20,15 @@ class ModalForm extends Component {
       editorState: EditorState.createEmpty(),
       editorContent: undefined
     }
+    this.onEditorChange = this.onEditorChange.bind(this);
+    this.onEditorStateChange = this.onEditorStateChange.bind(this);
   }
+
 
   static getDerivedStateFromProps(props, state) {
     if (props._oldTableData !== state._data) {
       return {
         _data: props._oldTableData,
-        // editorState: draftToHtml(EditorState.createWithContent(ContentState.createFromText(props._oldTableData.introduction)))
         editorState: EditorState.createWithContent(stateFromHTML(props._oldTableData.introduction))
       }
     } return null;
@@ -43,35 +41,45 @@ class ModalForm extends Component {
   onEditorChange(editorContent) {
     this.setState({ editorContent });
   };
+  
+  get_data = () => {
+    const { getFieldDecorator } = this.props.form;
+    const valus = this.props.from.getFieldsValue();
+    console.log("33333",valus);
+    return valus;
+  };
+
 
   render() {
     const { getFieldDecorator } = this.props.form;
     const { _data, editorState } = this.state;
 
     return (
-      <Form className="login-form">
-        <FormItem label="名称">
-          {getFieldDecorator('roleName', {
+      <Form className="update-form" >
+         
+        <FormItem label="标题">
+          {getFieldDecorator('title', {
             rules: [
               {
                 required: true,
-                message: '名称不能为空'
+                message: '标题不能为空'
               },
             ],
-            initialValue: _data.townName
+            initialValue: _data.title
           })(
             <Input
               prefix={
-                <Icon type="user"
+                <Icon type="edit"
                   style={{ color: 'rgba(0,0,0,.25)' }}
                 />
               }
-              placeholder="名称"
+              placeholder="标题"
             />
           )}
         </FormItem>
+
         <FormItem label="描述">
-          {getFieldDecorator('roleNameDesc', {
+          {getFieldDecorator('Desc', {
             rules: [
               {
                 required: true,
@@ -91,10 +99,10 @@ class ModalForm extends Component {
               onContentStateChange={this.onEditorChange} // 每次编辑器状态发生改变的时候调用这个函数,传递的参数是RawDraftContentState类型
               toolbar={{
                 history: { inDropdown: true },
-                inline: { inDropdown: false },
+                inline: { inDropdown: true },
                 list: { inDropdown: true },
                 textAlign: { inDropdown: true },
-                // image: { uploadCallback: this.imageUploadCallBack },
+                image: { uploadCallback: this.imageUploadCallBack },
               }}
             />
           )}

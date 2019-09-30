@@ -25,6 +25,7 @@ import { getAllCityAction } from '../action/getAllCityAction';
 const UpoloadComponentContainer = props => <BaseFormComponent {...props} />
 
 const mapStateToProps = state => {
+
   return {
     _getAllCityId : getAllCityIdSelector(state)
   }
