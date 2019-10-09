@@ -50,6 +50,7 @@ import AddInformation from './information/AddInformation';
 import Person from './person/Person';
 import Food from './food/Food';
 import Scenery from './scenery/Scenery';
+import UpdataAmorous from './amorous/UpdataAmorous';
  
 export default {
 	Dashboard,
@@ -76,5 +77,6 @@ export default {
 	Information,
 	Person,
 	Food,
-	Scenery
+	Scenery,
+	UpdataAmorous
 }

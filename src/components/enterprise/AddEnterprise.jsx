@@ -23,7 +23,7 @@ const AddEnterprise = props => {
   // 表格配置
   const FormConfig = [
     {
-      label: '村镇id',
+      label: '所属村镇',
       field: 'townsId',
       type: 'select',
       placeholder: '请选择村镇id'
