@@ -19,10 +19,10 @@ const AddFood = props => {
   // 表格配置
   const FormConfig = [
     {
-      label: '村镇id',
+      label: '所属村镇',
       field: 'townsId',
       type: 'select',
-      placeholder: '请选择村镇id'
+      placeholder: '请选择所属村镇'
     },
     {
       label: '美食名称',
@@ -39,7 +39,7 @@ const AddFood = props => {
   ]
 
   // 设置跳转地址
-  const skipUrl = '/app/famouscontroller/famouscontrollerdata';
+  const skipUrl = '/app/foodcontroller/foodcontrollerdata';
   // url路径管理
   const history = props.history;
   return (

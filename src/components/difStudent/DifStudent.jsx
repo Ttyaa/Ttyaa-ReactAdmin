@@ -45,6 +45,7 @@ const DifStudent = props => {
 
   return (
     <ControlTableContainer 
+      URL = '/app/difstudentcontroller/difstudentcontrollerdata/updata'
       columns = {columns}
       interfaceUrl={[DIFSTUDENT,DELDIFSTUDENT]}
       componentName = {props.routerTitle}

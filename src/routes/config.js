@@ -6,38 +6,38 @@ export default {
 			icon: 'mobile',
 			component: 'Dashboard'
 		},
-		{
-			key: '/app/settingControl',
-			title: '系统管理',
-			icon: 'mobile',
-			auth: 'superAdmin',
-			subs: [
-				{
-					key: '/app/settingControl/userControl',
-					title: '用户管理',
-					icon: 'audit',
-					component: ''
-				},
-				{
-					key: '/app/settingControl/roleControl',
-					title: '角色管理',
-					icon: 'audit',
-					component: ''
-				},
-				{
-					key: '/app/settingControl/authControl',
-					title: '权限管理',
-					icon: 'audit',
-					component: ''
-				},
-				{
-					key: '/app/settingControl/menuControl',
-					title: '菜单管理',
-					icon: 'audit',
-					component: ''
-				}
-			]
-		},
+		// {
+		// 	key: '/app/settingControl',
+		// 	title: '系统管理',
+		// 	icon: 'mobile',
+		// 	auth: 'superAdmin',
+		// 	subs: [
+		// 		{
+		// 			key: '/app/settingControl/userControl',
+		// 			title: '用户管理',
+		// 			icon: 'audit',
+		// 			component: ''
+		// 		},
+		// 		{
+		// 			key: '/app/settingControl/roleControl',
+		// 			title: '角色管理',
+		// 			icon: 'audit',
+		// 			component: ''
+		// 		},
+		// 		{
+		// 			key: '/app/settingControl/authControl',
+		// 			title: '权限管理',
+		// 			icon: 'audit',
+		// 			component: ''
+		// 		},
+		// 		{
+		// 			key: '/app/settingControl/menuControl',
+		// 			title: '菜单管理',
+		// 			icon: 'audit',
+		// 			component: ''
+		// 		}
+		// 	]
+		// },
 		{
 			key: '/app/amorous',
 			title: '风土人情',
@@ -244,5 +244,15 @@ export default {
 		// 	title: '注册',
 		// 	component: 'Register'
 		// },
+		{	
+			key: '/app/amorous/amorousdata/updata',
+			title: '修改风土人情',
+			component: 'UpdataAmorous'
+		},
+		{	
+			key: '/app/difstudentcontroller/difstudentcontrollerdata/updata',
+			title: '修改困难大学生',
+			component: 'UpdataAmorous'
+		},
 	] 
 }

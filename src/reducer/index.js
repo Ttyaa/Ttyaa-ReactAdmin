@@ -30,7 +30,6 @@ import {
 	MenuReducer,
 	AuthReducer
 } from './authReducer';
-import {RegisterReducer} from './registerReducer';
 
 const appReducer = combineReducers({
 	LoginReducer,
@@ -44,8 +43,7 @@ const appReducer = combineReducers({
 	RoleReducer,
 	MenuReducer,
 	AuthReducer,
-	searchReducer,
-	RegisterReducer
+	searchReducer
 });
 
 // 

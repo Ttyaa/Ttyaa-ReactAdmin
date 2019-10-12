@@ -31,14 +31,11 @@ const Dashboard = props => {
             className="singleStyle"
             key="singleStyle"
           />,
-          <span key="_uploadSliderSpan">首页</span>,
+          <span key="_uploadSliderSpan">丰顺爱心促进会</span>,
         ]}
       >
         {/* 公共上传容器组件 */}
-        <UpoloadComponentContainer
-          interfaceUrl = {UPDATESYSTEMINFO}
-          componentName = "defaultDisplayPicture"
-        />
+       
       </Card>
 
     </Fragment>

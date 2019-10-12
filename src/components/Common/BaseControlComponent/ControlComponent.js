@@ -7,7 +7,8 @@
  * @ 最新修改时间: 2019-07-01 17:02:56
  */
 
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment} from 'react';
+import { Link } from 'react-router-dom';
 import {
   Table,
   Button,
@@ -76,10 +77,10 @@ const EditableCell = props => {
 
 // EditableTable
 const EditableTable = props => {
+  console.log('props',props)
 
-  console.log('11111',props);
   // 接口地址
-  const [GET_ALL_DATA, DELETE_ALL_DATA, GET_ALL_DATA_BYID, UPDATE ] = props.interfaceUrl;
+  const [GET_ALL_DATA, DELETE_ALL_DATA, GET_ALL_DATA_BYID ] = props.interfaceUrl;
 
   // 设置初始值
   const [data, setData] = useState(null),
@@ -107,7 +108,6 @@ const EditableTable = props => {
     setTotal(props._total);
   };
 
-
   // 删除操作
   const HandleDelete = id => {
     props.delTableAction(DELETE_ALL_DATA, id);
@@ -134,9 +134,10 @@ const EditableTable = props => {
   // modleHandleEdit
   const handleEdit = id => {
     setRowId(id);
-    setVisible(true);
     console.log(id);
   }
+  // console.log('11111',this.rowId);
+
 // console.log(rowId);
 
   // 整合细胞组件与表格行配置
@@ -172,8 +173,8 @@ const EditableTable = props => {
               <span>
                 <EditableContext.Consumer>
                   {form => (
-                    <Button type="primary" icon="edit" onClick={() => handleEdit(record.id)} >
-                      修改
+                    <Button type="primary" icon="edit" >
+                       <Link to={props.URL+`?id=${record.id}`}>修改</Link>
                     </Button>
                   )}
                 </EditableContext.Consumer>

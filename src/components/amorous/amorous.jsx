@@ -42,9 +42,10 @@ const Amorous = props => {
   ]
 
   return (
-    <ControlTableContainer 
+    <ControlTableContainer
+      URL = {'/app/amorous/amorousdata/updata'}
       columns = {columns}
-      interfaceUrl={[GETAMOROUS, DELAMOROUS ,AMOROUSBYID ,UPDATEAMOROUS]}
+      interfaceUrl={[GETAMOROUS, DELAMOROUS, AMOROUSBYID, UPDATEAMOROUS]}
       crumbsConfig={{
         first: '风土人情',
         second: props.routerTitle,

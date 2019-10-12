@@ -1,0 +1,12 @@
+.ant-layout-header{
+  background-color: #313653 ;
+}
+.ant-layout-sider{
+  background-color: #313653 ;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+  background-color: #313653 ;
+}
+._logo {
+  margin-bottom: 15px;
+}

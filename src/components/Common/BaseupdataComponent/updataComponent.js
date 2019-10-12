@@ -1,9 +1,5 @@
 /**
- * @ 作者: Gszs
- * @ 创建时间: 2019-05-04 22:08:25
- * @ Modified by: Gszs
- * @ Modified time: 2019-09-11 10:26:46
- * @ 文件解释: 表单上传公共组件
+ * @ 文件解释: 表单更新公共组件
  */
 
 import React, { useState, useEffect } from 'react';
@@ -27,21 +23,22 @@ import { GETTOWNSLIST } from '../../../axios'
 
 const BaseFormComponent = props => {
   const [loading] = useState(false);
-
+  console.log("props",props);
   const sceneryType = ['自然风光', '度假胜地', '乡村旅游', '主题公园'];
   const informationType = [{ type: '新闻资讯', id: 1 }, { type: '消息公告', id: 2 }, { type: '喜讯通知', id: 3 }, { type: '政务信息', id: 5 }, { type: '党务信息', id: 6 }]
 
   useEffect(() => {
     props.getAllCityAction(GETTOWNSLIST);
+    
   }, [])
 
   // 用来获取原始组件的push方法
   const history = props.routerPath;
 
-
   // 初始化富文本内容
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [editorContent, setEditorContent] = useState(undefined)
+  const [editorContent, setEditorContent] = useState("hahahahahhahaahhahaha");
+  console.log("editorContent",editorContent);
 
   // 设置上传时显示默认图片 - 特殊处理首页需要默认显2张二维码
   if (props.componentName === 'defaultDisplayPicture') {
@@ -207,7 +204,7 @@ const BaseFormComponent = props => {
         if (props.componentName === 'defaultDisplayPicture') {
           props._reload();
         } else {
-          props.addTableAction(props.interfaceUrl, formData, props.componentName);
+          props.updateTableAction(props.interfaceUrl, props.DataID,formData);
           history.push(props.skipUrl) // 跳转到管理界面
         }
       } else {
@@ -216,8 +213,6 @@ const BaseFormComponent = props => {
     });
 
   };
-
-
 
   // 处理表格组件
   const initForm = () => {
@@ -228,12 +223,13 @@ const BaseFormComponent = props => {
 
     if (formList && formList.length > 0) {
       formList.forEach(item => {
+        console.log('item',item);
 
         let label = item.label,
-          field = item.field,
-          initialValue = item.initialValue || '',
-          placeholder = item.placeholder || '',
-          radioContent = item.radioContent || [];
+            field = item.field,
+            initialValue = item.oldData || '',
+            placeholder = item.placeholder || '',
+            radioContent = item.radioContent || [];
 
         if (item.type === 'text') {
           const input_text = (
@@ -251,6 +247,25 @@ const BaseFormComponent = props => {
                 ],
                 initialValue: initialValue,
               })(<Input type={item.text} />)}
+            </FormItem>
+          );
+          formItemList.push(input_text);
+        } else if (item.type === 'text1') {
+          const input_text = (
+            <FormItem key={field} label={label}>
+              {getFieldDecorator(field, {
+                rules: [
+                  {
+                    required: true,
+                    message: placeholder,
+                  },
+                  {
+                    pattern: new RegExp(RegExpStr, 'ig'),
+                    message: '不允许输入特殊字符',
+                  },
+                ],
+                initialValue: initialValue,
+              })(<Input disabled="true " type={item.text} />)}
             </FormItem>
           );
           formItemList.push(input_text);
@@ -356,8 +371,11 @@ const BaseFormComponent = props => {
           )
           formItemList.push(radioInput);
         } else if (item.type === 'richText') {
-          const richText = (<FormItem key={field} label={label} >
-            {getFieldDecorator(field)(
+          const richText = (
+          <FormItem key={field} label={label} >
+            {getFieldDecorator(field,{
+              initialValue: initialValue
+            })(
               <div>
                 <Editor
                   editorState={editorState}
@@ -413,7 +431,7 @@ const BaseFormComponent = props => {
           type="primary"
           htmlType="submit"
         >
-          {loading ? '上传中' : '开始上传'}
+          {loading ? '上传中' : '确定修改'}
         </Button>
       </FormItem>
     </Form>

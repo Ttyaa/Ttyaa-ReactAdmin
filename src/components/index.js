@@ -24,39 +24,38 @@
  * ==== 模块测试
  * @file Register -> 完整的注册模块
  */
-
-import Dashboard from '../containers/DashboardContainer';
-import AuthBasic from './auth/Basic';
-import RouterEnter from './auth/RouterEnter';
-import QueryParams from './extension/QueryParams';
-// import LogInfo from './log/LogControl';
-import Amorous from './amorous/amorous';
-import AddAmorous from './amorous/AddAmorous';
-import Towns from './towns/Towns';
-import AddTowns from './towns/AddTowns';
-import AddDifFamily from './diffamilycontroller/AddDifFamily';
-import AddDifStudent from './difStudent/AddDifStudent';
-import AddEnterprise from './enterprise/AddEnterprise';
-import AddWheelplanting from './wheelplanting/AddWheelplanting';
-import DifFamilyControler from './diffamilycontroller/DifFamilyControler';
-import DifStudent from './difStudent/DifStudent';
-import Wheelplanting from './wheelplanting/wheelplanting';
-import Enterprise from './enterprise/Enterprise';
-import AddPerson from './person/AddPerson';
-import AddFood from './food/AddFood';
-import AddScenery from './scenery/AddScenery';
-import Information from './information/Information';
-import AddInformation from './information/AddInformation';
-import Person from './person/Person';
-import Food from './food/Food';
-import Scenery from './scenery/Scenery';
+import {lazy} from 'react';
+const AuthBasic = lazy(() => import('./auth/Basic'));
+const RouterEnter = lazy(() => import('./auth/RouterEnter'));
+const QueryParams = lazy(() => import('./extension/QueryParams'));
+const Amorous = lazy(() => import('./amorous/amorous'));
+const AddAmorous = lazy(() => import('./amorous/AddAmorous'));
+const Towns = lazy(() => import('./towns/Towns'));
+const AddTowns = lazy(() => import('./towns/AddTowns'));
+const AddDifFamily = lazy(() => import('./diffamilycontroller/AddDifFamily'));
+const AddDifStudent = lazy(() => import('./difStudent/AddDifStudent'));
+const AddEnterprise = lazy(() => import('./enterprise/AddEnterprise'));
+const AddWheelplanting = lazy(() => import('./wheelplanting/AddWheelplanting'));
+const DifFamilyControler = lazy(() => import('./diffamilycontroller/DifFamilyControler'));
+const DifStudent = lazy(() => import('./difStudent/DifStudent'));
+const Wheelplanting = lazy(() => import('./wheelplanting/wheelplanting'));
+const Enterprise = lazy(() => import('./enterprise/Enterprise'));
+const AddPerson = lazy(() => import('./person/AddPerson'));
+const AddFood = lazy(() => import('./food/AddFood'));
+const AddScenery = lazy(() => import('./scenery/AddScenery'));
+const Information = lazy(() => import('./information/Information'));
+const AddInformation = lazy(() => import('./information/AddInformation'));
+const Person = lazy(() => import('./person/Person'));
+const Food = lazy(() => import('./food/Food'));
+const Scenery = lazy(() => import('./scenery/Scenery'));
+const Dashboard = lazy(() => import('../containers/DashboardContainer'));
+const UpdataAmorous = lazy(() => import('./amorous/UpdataAmorous'));
  
 export default {
 	Dashboard,
 	AuthBasic,
 	RouterEnter,
 	QueryParams,
-	// LogInfo,
 	Amorous,
 	AddAmorous,
 	Towns,
@@ -76,5 +75,6 @@ export default {
 	Information,
 	Person,
 	Food,
-	Scenery
+	Scenery,
+	UpdataAmorous
 }

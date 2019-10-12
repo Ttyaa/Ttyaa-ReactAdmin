@@ -31,7 +31,7 @@ const AddWheelplanting = props => {
       placeholder: '请输入描述'
     },
     {
-      label: '图片文件',
+      label: '图片文件（推荐尺寸：414px * 194px）',
       field: 'file',
       type: 'file',
       placeholder: '添加图片'

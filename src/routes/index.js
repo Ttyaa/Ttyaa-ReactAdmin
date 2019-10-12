@@ -6,7 +6,7 @@
  * @ 文件解释: 控制路由系统
  */
 
-import React, {Component} from 'react';
+import React, {Component, Suspense} from 'react';
 import {Route, Redirect, Switch} from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import AllComponents from '../components';
@@ -83,7 +83,9 @@ export default class CRouter extends Component {
                     // 重新包装组件
                     const wrappedComponent = (
                       <DocumentTitle title={r.title}>
-                        <Component {...merge} routerTitle={r.title} />
+                        <Suspense fallback={<div>Loading...</div>}>
+                          <Component {...merge} routerTitle={r.title} />
+                        </Suspense>
                       </DocumentTitle>
                     );
                     // 权限拦截
