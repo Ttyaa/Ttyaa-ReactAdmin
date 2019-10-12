@@ -15,8 +15,7 @@ import {
   Popconfirm,
   Form,
   Modal,
-  Pagination,
-  Tooltip
+  Pagination
 } from 'antd';
 import BreadcrumbCustom from '../../BreadcrumbCustom';
 import ModalFormContainer from '../../../containers/ModalFormContainer';
@@ -42,14 +41,8 @@ const EditableCell = props => {
     // introduction代表表格中的详细内容的字段
     if (dataIndex === 'introduction') {
       // setTooltip(record[dataIndex])
-      setTooltip(
-        <div
-          dangerouslySetInnerHTML={{ __html: record[dataIndex] }}
-        />
-      )
     }
   }
-  const [tooltip, setTooltip] = useState([]);
 
   const {
     dataIndex,
@@ -64,11 +57,9 @@ const EditableCell = props => {
     <EditableContext.Consumer>
       {form => {
         return (
-          <Tooltip placement="top" title={tooltip}>
             <td {...restProps} onClick={e => displaytooltipContent(e, record, dataIndex)}>
               {restProps.children}
             </td>
-          </Tooltip>
         );
       }}
     </EditableContext.Consumer>
@@ -87,7 +78,6 @@ const EditableTable = props => {
         [total, setTotal] = useState(10),
         [visible, setVisible] = useState(false),
         [rowId, setRowId] = useState(undefined)
-
   // 分页
   const [page, setPage] = useState(1);
 
@@ -107,7 +97,6 @@ const EditableTable = props => {
     setData(props._tableData);
     setTotal(props._total);
   };
-
   // 删除操作
   const HandleDelete = id => {
     props.delTableAction(DELETE_ALL_DATA, id);
@@ -127,7 +116,6 @@ const EditableTable = props => {
   const handleOk = ()=> {
     setVisible(false);
     alert(rowId);
-    
     // props.updateTableAction(UPDATE,rowId,);
   }
 

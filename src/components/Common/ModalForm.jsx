@@ -49,13 +49,20 @@ class ModalForm extends Component {
     return valus;
   };
 
+  onChange = e => {
+    e.preventDefault();
+    console.log(e);
+    
+  };
+
 
   render() {
     const { getFieldDecorator } = this.props.form;
     const { _data, editorState } = this.state;
+    
 
     return (
-      <Form className="update-form" >
+      <Form className="update-form">
          
         <FormItem label="标题">
           {getFieldDecorator('title', {
@@ -68,6 +75,7 @@ class ModalForm extends Component {
             initialValue: _data.title
           })(
             <Input
+              onChange={this.onChange}
               prefix={
                 <Icon type="edit"
                   style={{ color: 'rgba(0,0,0,.25)' }}

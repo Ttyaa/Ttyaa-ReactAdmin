@@ -253,6 +253,6 @@ export default {
 			key: '/app/difstudentcontroller/difstudentcontrollerdata/updata',
 			title: '修改困难大学生',
 			component: 'UpdataAmorous'
-		},
+	  }
 	] 
 }
