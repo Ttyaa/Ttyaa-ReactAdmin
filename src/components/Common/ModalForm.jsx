@@ -10,6 +10,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { stateFromHTML } from 'draft-js-import-html';
 
 const FormItem = Form.Item;
+
 class ModalForm extends Component {
 
   constructor(props) {
@@ -18,7 +19,8 @@ class ModalForm extends Component {
     this.state = {
       _data: this.props._oldTableData,
       editorState: EditorState.createEmpty(),
-      editorContent: undefined
+      editorContent: undefined,
+      formList : this.props.columns
     }
     this.onEditorChange = this.onEditorChange.bind(this);
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
@@ -41,29 +43,29 @@ class ModalForm extends Component {
   onEditorChange(editorContent) {
     this.setState({ editorContent });
   };
-  
+
   get_data = () => {
     const { getFieldDecorator } = this.props.form;
     const valus = this.props.from.getFieldsValue();
-    console.log("33333",valus);
+    console.log("33333", valus);
     return valus;
   };
 
   onChange = e => {
     e.preventDefault();
     console.log(e);
-    
+
   };
 
 
   render() {
     const { getFieldDecorator } = this.props.form;
     const { _data, editorState } = this.state;
-    
+
 
     return (
       <Form className="update-form">
-         
+     
         <FormItem label="标题">
           {getFieldDecorator('title', {
             rules: [

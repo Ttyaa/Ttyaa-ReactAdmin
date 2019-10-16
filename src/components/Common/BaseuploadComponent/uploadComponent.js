@@ -173,12 +173,12 @@ const BaseFormComponent = props => {
 
   // 上传提交
   const handleSubmit = e => {
-
     e.preventDefault();
 
     props.form.validateFields((err, values) => {
       // 富文本内容不为空
       if (draftToHtml(editorContent) || !err) {
+
         let formData = {};
         if (fileList.length === 0) {
           Object.keys(values).map((cv, index) => {
@@ -205,7 +205,7 @@ const BaseFormComponent = props => {
         // 处理页面不需要跳转直接刷新当前页面的情况
 
         if (props.componentName === 'defaultDisplayPicture') {
-          props._reload();
+          console.log("11111111111",props._reload());
         } else {
           props.addTableAction(props.interfaceUrl, formData, props.componentName);
           history.push(props.skipUrl) // 跳转到管理界面

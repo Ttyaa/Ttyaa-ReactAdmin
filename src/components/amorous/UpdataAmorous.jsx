@@ -27,19 +27,15 @@ const AddAmorous = props => {
     }
     const id = getUrlToken('id', str);
     setDataID(id);
-    // console.log("id",id);
     AMOROUSBYID(id).then(e=>{
-      // console.log("e",e);
       setOldData(e.data);
     })
     }, [])
-    console.log("e1111",oldData);  
-
   // 表格配置
   const FormConfig = [
     {
       label: '所属村镇（不可修改）',
-      field: 'townsId',
+      field: 'townsName',
       oldData:oldData.townName,
       type: 'text1',
       placeholder: '请选择所属村镇'

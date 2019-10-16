@@ -123,6 +123,7 @@ const EditableTable = props => {
   const handleEdit = id => {
     setRowId(id);
     console.log(id);
+    setVisible(true);
   }
   // console.log('11111',this.rowId);
 
@@ -162,6 +163,7 @@ const EditableTable = props => {
                 <EditableContext.Consumer>
                   {form => (
                     <Button type="primary" icon="edit" >
+                      {/* 修改  onClick={() =>handleEdit(record.id)}  */}
                        <Link to={props.URL+`?id=${record.id}`}>修改</Link>
                     </Button>
                   )}
@@ -215,7 +217,7 @@ const EditableTable = props => {
           showSizeChanger
         />
         <Modal
-          width={500}
+          width={1200}
           title={props.componentName}
           visible={visible}
           okText="确定修改"

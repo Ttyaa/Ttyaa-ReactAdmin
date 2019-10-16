@@ -3,6 +3,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import $ from 'jquery';
 import {
   Form,
   Input,
@@ -15,30 +16,23 @@ import {
 } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
 import '../../../style/singlevideo.less';
-import { EditorState } from 'draft-js';
+import { EditorState, convertFromHTML, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { GETTOWNSLIST } from '../../../axios'
+import { stateFromHTML } from 'draft-js-import-html';
 
 const BaseFormComponent = props => {
   const [loading] = useState(false);
-  console.log("props",props);
+  console.log("props", props);
   const sceneryType = ['自然风光', '度假胜地', '乡村旅游', '主题公园'];
   const informationType = [{ type: '新闻资讯', id: 1 }, { type: '消息公告', id: 2 }, { type: '喜讯通知', id: 3 }, { type: '政务信息', id: 5 }, { type: '党务信息', id: 6 }]
-
-  useEffect(() => {
-    props.getAllCityAction(GETTOWNSLIST);
-    
-  }, [])
-
   // 用来获取原始组件的push方法
   const history = props.routerPath;
 
   // 初始化富文本内容
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [editorContent, setEditorContent] = useState("hahahahahhahaahhahaha");
-  console.log("editorContent",editorContent);
+  const [editorContent, setEditorContent] = useState(undefined);
 
   // 设置上传时显示默认图片 - 特殊处理首页需要默认显2张二维码
   if (props.componentName === 'defaultDisplayPicture') {
@@ -56,7 +50,6 @@ const BaseFormComponent = props => {
   else {
     var [fileList, setfileList] = useState([])
   }
-
   const { TextArea } = Input;
 
   // 改变默认图片的初始值 - 只对需要默认显示图片的上传
@@ -117,15 +110,20 @@ const BaseFormComponent = props => {
       setfileList([...fileList, file]);
       return false;
     },
-
     listType: 'picture-card',
     fileList,
   };
 
   // 处理富文本事件
   const onEditorStateChange = editorState => {
-    setEditorState(editorState)
+    console.log("EditorStateChange", editorState);
+    setEditorState(editorState);
   };
+  const onEditorChange = editorContent => {
+    console.log("editorContent", editorContent);
+    setEditorContent(editorContent)
+  };
+
   // 异步上传富文本中的图片,获取返回的链接
   const imageUploadCallBack = file => {
     let imageUploadPromise = new Promise(
@@ -161,18 +159,12 @@ const BaseFormComponent = props => {
     return imageUploadPromise;
   }
 
-  const onEditorChange = editorContent => {
-    setEditorContent(editorContent)
-  };
-
   // 显示上传的视频
   const handleChange = ({ fileList }) => { setfileList(fileList) }
 
   // 上传提交
   const handleSubmit = e => {
-
     e.preventDefault();
-
     props.form.validateFields((err, values) => {
       // 富文本内容不为空
       if (draftToHtml(editorContent) || !err) {
@@ -202,16 +194,17 @@ const BaseFormComponent = props => {
         // 处理页面不需要跳转直接刷新当前页面的情况
 
         if (props.componentName === 'defaultDisplayPicture') {
-          props._reload();
+          // props._reload();
         } else {
-          props.updateTableAction(props.interfaceUrl, props.DataID,formData);
-          history.push(props.skipUrl) // 跳转到管理界面
+          alert("22222222");
+          console.log("props.DataID", props.DataID, "======formData", formData);
+          props.updateTableAction(props.interfaceUrl, props.DataID, formData);
+          // history.push(props.skipUrl) // 跳转到管理界面
         }
       } else {
         message.error(`表单格式有误`);
       }
     });
-
   };
 
   // 处理表格组件
@@ -223,13 +216,12 @@ const BaseFormComponent = props => {
 
     if (formList && formList.length > 0) {
       formList.forEach(item => {
-        console.log('item',item);
 
         let label = item.label,
-            field = item.field,
-            initialValue = item.oldData || '',
-            placeholder = item.placeholder || '',
-            radioContent = item.radioContent || [];
+          field = item.field,
+          initialValue = item.oldData || '',
+          placeholder = item.placeholder || '',
+          radioContent = item.radioContent || [];
 
         if (item.type === 'text') {
           const input_text = (
@@ -265,7 +257,7 @@ const BaseFormComponent = props => {
                   },
                 ],
                 initialValue: initialValue,
-              })(<Input disabled="true " type={item.text} />)}
+              })(<Input disabled="true " type={item.text} value={null} />)}
             </FormItem>
           );
           formItemList.push(input_text);
@@ -371,33 +363,48 @@ const BaseFormComponent = props => {
           )
           formItemList.push(radioInput);
         } else if (item.type === 'richText') {
+          // const sampleMarkup = '<img src="../../../../public/images/icons/icon-128x128.png" />';
+          // const blocksFromHTML = convertFromHTML(sampleMarkup);
+          // const state = ContentState.createFromBlockArray(
+          //   blocksFromHTML.contentBlocks,
+          //   blocksFromHTML.entityMap,
+          // );
+          // useEffect(e => {
+          //   setEditorState(EditorState.createWithContent("Hello"));
+          // }, [])
+          // setEditorState(EditorState.createWithContent(stateFromHTML(initialValue)));
+          // const value = EditorState.createWithContent(stateFromHTML(initialValue));
+          console.log("value",initialValue);
+          useEffect( e =>{
+            setEditorState(EditorState.createWithContent(stateFromHTML(' <p>Hello</p>')));
+            // setEditorState(EditorState.createWithContent($(initialValue).html()));
+            // setEditorState(className.html(initialValue));
+          },[initialValue])
           const richText = (
-          <FormItem key={field} label={label} >
-            {getFieldDecorator(field,{
-              initialValue: initialValue
-            })(
-              <div>
-                <Editor
-                  editorState={editorState}
-                  toolbarClassName="home-toolbar"
-                  wrapperClassName="home-wrapper"
-                  editorClassName="home-editor"
-                  localization={{ locale: 'zh', translations: { 'generic.add': '添加' } }}
-                  wrapperClassName="wysiwyg-wrapper"
-                  placeholder="请输入正文"
-                  onEditorStateChange={onEditorStateChange} // 每次编辑器状态发生改变的时候调用这个函数,传递的参数是EditorState类型
-                  onContentStateChange={onEditorChange} // 每次编辑器状态发生改变的时候调用这个函数,传递的参数是RawDraftContentState类型
-                  toolbar={{
-                    history: { inDropdown: true },
-                    inline: { inDropdown: false },
-                    list: { inDropdown: true },
-                    textAlign: { inDropdown: true },
-                    image: { uploadCallback: imageUploadCallBack },
-                  }}
-                />
-              </div>
-            )}
-          </FormItem>)
+            <FormItem key={field} label={label} >
+              {getFieldDecorator(field)(
+                <div>
+                  <Editor
+                    editorState={editorState}
+                    toolbarClassName="home-toolbar"
+                    wrapperClassName="home-wrapper"
+                    editorClassName="home-editor"
+                    localization={{ locale: 'zh', translations: { 'generic.add': '添加' } }}
+                    wrapperClassName="wysiwyg-wrapper"
+                    placeholder="请输入正文"
+                    onEditorStateChange={onEditorStateChange} // 每次编辑器状态发生改变的时候调用这个函数,传递的参数是EditorState类型
+                    onContentStateChange={onEditorChange} // 每次编辑器状态发生改变的时候调用这个函数,传递的参数是RawDraftContentState类型
+                    toolbar={{
+                      history: { inDropdown: true },
+                      inline: { inDropdown: true },
+                      list: { inDropdown: true },
+                      textAlign: { inDropdown: true }, 
+                      image: { uploadCallback: imageUploadCallBack },
+                    }}
+                  />
+                </div>
+              )}
+            </FormItem>)
           formItemList.push(richText);
         } else if (item.type === 'file') {
           const input_file = (
@@ -418,7 +425,7 @@ const BaseFormComponent = props => {
         }
       });
     }
-    console.log('formItemList',formItemList);
+    console.log("formItemList", formItemList);
     return formItemList;
   };
 

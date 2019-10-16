@@ -5,7 +5,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseFormComponent from '../components/Common/BaseupdataComponent/updataComponent';
-import { updateTableAction } from '../action/controlTableDataAction';
+import { updateTableAction,getTableByIdAction } from '../action/controlTableDataAction';
 import { localStoreAction } from '../action/settingAction';
 import { getAllCityIdSelector } from '../selector/controlTableDataSelector';
 import { getAllCityAction } from '../action/getAllCityAction';
@@ -21,6 +21,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps, {
+    getTableByIdAction,
     updateTableAction,
     getAllCityAction,
     localStoreAction

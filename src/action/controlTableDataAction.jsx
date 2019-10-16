@@ -164,7 +164,7 @@ export const updateTableAction = (axiosFun, id, formData) => {
           payload: res
         })
       }else{
-        message.success(`修改编号${id}数据失败! 错误是: ${res}`)
+        message.error(`修改编号${id}数据失败! 错误是: ${ JSON.stringify(res) }`)
         dispatch({
           type: TableDataConstants._failUpdateTableData
         })
